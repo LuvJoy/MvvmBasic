@@ -7,7 +7,8 @@ import com.joseph.mvvmbasic.data.model.MovieDetails
 import io.reactivex.disposables.CompositeDisposable
 
 class SingleMovieViewModel(
-    private val movieRepository: MovieDetailsRepository, movieId: Int
+    private val movieRepository: MovieDetailsRepository,
+    val movieId: Int
 ) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()

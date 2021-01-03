@@ -1,6 +1,4 @@
-package com.joseph.mvvmbasic.data.repository
-
-import android.net.Network
+package com.joseph.mvvmbasic.data.api
 
 enum class Status {
     RUNNING,

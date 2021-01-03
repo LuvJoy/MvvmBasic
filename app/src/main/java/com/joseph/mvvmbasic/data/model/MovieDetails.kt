@@ -25,7 +25,7 @@ data class MovieDetails(
     @SerializedName("release_date")
     var releaseDate: String,
     @SerializedName("revenue")
-    var revenue: Int,
+    var revenue: Long,
     @SerializedName("runtime")
     var runtime: Int,
     @SerializedName("spoken_languages")
@@ -39,7 +39,7 @@ data class MovieDetails(
     @SerializedName("video")
     var video: Boolean,
     @SerializedName("vote_average")
-    var voteAverage: Int,
+    var voteAverage: Float,
     @SerializedName("vote_count")
     var voteCount: Int
 )

@@ -14,6 +14,7 @@ import com.joseph.mvvmbasic.data.api.TheMovieDbClient
 import com.joseph.mvvmbasic.data.model.MovieDetails
 import com.joseph.mvvmbasic.data.repository.MovieDetailsRepository
 import com.joseph.mvvmbasic.data.repository.SingleMovieViewModel
+import com.joseph.mvvmbasic.data.repository.SingleMovieViewModelFactory
 import com.joseph.mvvmbasic.databinding.ActivityMovieDetailBinding
 import java.text.NumberFormat
 import java.util.*
@@ -33,15 +34,17 @@ class MovieDetailActivity : AppCompatActivity() {
         val apiService = TheMovieDbClient.getClient()
         movieRepository = MovieDetailsRepository(apiService)
 
-        viewModel = getViewModel(movieId)
+        viewModel = getViewModel(movieId, movieRepository)
         viewModel.movieDetails.observe(this@MovieDetailActivity, Observer {
             bindUI(it)
         })
 
         viewModel.networkState.observe(this@MovieDetailActivity, Observer { networkState ->
             binding.apply {
-                progressBar.visibility = if(networkState == NetworkState.LOADING) View.VISIBLE else View.GONE
-                errorTextview.visibility = if(networkState == NetworkState.ERROR) View.VISIBLE else View.GONE
+                progressBar.visibility =
+                    if (networkState == NetworkState.LOADING) View.VISIBLE else View.GONE
+                errorTextview.visibility =
+                    if (networkState == NetworkState.ERROR) View.VISIBLE else View.GONE
             }
         })
 
@@ -67,8 +70,12 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    private fun getViewModel(movieId: Int): SingleMovieViewModel {
-        return ViewModelProvider.AndroidViewModelFactory.getInstance(application)
-            .create(SingleMovieViewModel::class.java)
+    private fun getViewModel(
+        movieId: Int,
+        repository: MovieDetailsRepository
+    ): SingleMovieViewModel {
+        return ViewModelProvider(this@MovieDetailActivity,
+            SingleMovieViewModelFactory(repository, movieId))
+            .get(SingleMovieViewModel::class.java)
     }
 }

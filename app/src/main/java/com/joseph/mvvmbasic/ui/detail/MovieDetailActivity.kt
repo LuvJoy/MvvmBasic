@@ -1,13 +1,11 @@
-package com.joseph.mvvmbasic.ui
+package com.joseph.mvvmbasic.ui.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStore
 import com.bumptech.glide.Glide
-import com.joseph.mvvmbasic.R
 import com.joseph.mvvmbasic.data.api.IMAGE_URL
 import com.joseph.mvvmbasic.data.api.NetworkState
 import com.joseph.mvvmbasic.data.api.TheMovieDbClient

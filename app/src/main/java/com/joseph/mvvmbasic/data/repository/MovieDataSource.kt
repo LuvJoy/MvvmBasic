@@ -18,7 +18,6 @@ class MovieDataSource(
     private var page = FIRST_PAGE
     val networkState: MutableLiveData<NetworkState> = MutableLiveData()
 
-
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Movie>) {
         networkState.postValue(NetworkState.LOADING)
 
@@ -38,9 +37,7 @@ class MovieDataSource(
         )
     }
 
-    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
-        TODO("Not yet implemented")
-    }
+    override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         compositeDisposable.add(

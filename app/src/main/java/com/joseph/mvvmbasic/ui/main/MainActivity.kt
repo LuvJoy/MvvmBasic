@@ -1,6 +1,5 @@
-package com.joseph.mvvmbasic.ui
+package com.joseph.mvvmbasic.ui.main
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.joseph.mvvmbasic.databinding.ActivityMainBinding
@@ -14,10 +13,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btn.setOnClickListener {
-            val intent = Intent(this, MovieDetailActivity::class.java)
-            intent.putExtra("id", 299534)
-            startActivity(intent)
-        }
+
     }
 }

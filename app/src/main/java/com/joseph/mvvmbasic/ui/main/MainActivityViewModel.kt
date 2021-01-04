@@ -16,7 +16,7 @@ class MainActivityViewModel(
     val moviePagedList: LiveData<PagedList<Movie>> by lazy {
         movieRepository.fetchLiveMoviePagedList(compositeDisposable)
     }
-    val networkString: LiveData<NetworkState> by lazy {
+    val networkState: LiveData<NetworkState> by lazy {
         movieRepository.getNetwokrState()
     }
 

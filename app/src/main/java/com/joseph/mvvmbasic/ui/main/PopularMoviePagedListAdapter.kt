@@ -110,13 +110,15 @@ class PopularMoviePagedListAdapter(
         fun bind(movie: Movie, context: Context) {
             item = movie
 
+            binding.root.setOnClickListener(this)
             binding.apply {
+
                 cvMovieTitle.text = movie.title
                 cvMovieReleaseDate.text = movie.releaseDate
 
                 val moviePosterURL = IMAGE_URL + movie.posterPath
-                Glide.with(context)
-                        .load(movie)
+                Glide.with(itemView.context)
+                        .load(moviePosterURL)
                         .into(binding.cvIvMoviePoster)
             }
         }
